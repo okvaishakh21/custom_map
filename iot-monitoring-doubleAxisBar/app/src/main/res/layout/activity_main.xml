@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:id="@+id/red_toggle"
+                    android:tag="@string/frequency"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/toggle_red"
+                    android:text=" Frequency" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:id="@+id/yellow_toggle"
+                    android:tag="@string/temperature_text"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/toggle_yellow"
+                    android:text=" Temperature" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:id="@+id/green_toggle"
+                    android:tag="@string/humidity"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/toggle_green"
+                    android:text=" Humidity" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/l1"
+            android:paddingEnd="5dp"
+            android:paddingStart="10dp"
+            android:layout_centerHorizontal="true"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1.5"
+                android:gravity="center">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:id="@+id/orange_toggle"
+                    android:tag="@string/sound"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/toggle_orange"
+                    android:text=" Sound" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:padding="5dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:id="@+id/blue_toggle"
+                    android:tag="@string/vibration"
+                    android:background="@android:color/transparent"
+                    android:button="@drawable/toggle_blue"
+                    android:text=" Vibration" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_below="@id/l2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

@@ -1,0 +1,149 @@
+package com.example.mpandroid;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.CombinedChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.CombinedData;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.ScatterData;
+import com.github.mikephil.charting.data.ScatterDataSet;
+import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    float groupSpace = 0.08f;
+    float barSpace = 0.03f; // x4 DataSet
+    float barWidth = 0.2f;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        CombinedChart combinedChart = (CombinedChart) findViewById(R.id.chart);
+        CombinedData data = new CombinedData();
+        data.setData(barData());
+        data.setData(scatterData());
+        combinedChart.setData(data);
+
+       /* ArrayList<BarEntry> yFrequency = new ArrayList<BarEntry>();
+        ArrayList<BarEntry> yHumidity = new ArrayList<BarEntry>();
+        ArrayList<BarEntry> yTemperature = new ArrayList<BarEntry>();
+        ArrayList<Entry> yAvg = new ArrayList<Entry>();
+
+        for (int i = 0; i <40 ; i=i+10) {
+            yFrequency.add(new BarEntry(i, (float) (Math.random() * 100)));
+            yHumidity.add(new BarEntry(i, (float) (Math.random() * 100)));
+            yTemperature.add(new BarEntry(i, (float) (Math.random() * 10000)));
+            yAvg.add(new Entry(4f, 0));
+        }
+        ScatterDataSet dotDataset = new ScatterDataSet(yAvg, "h");
+        ArrayList<String> labels = new ArrayList<String>();
+        labels.add("January");
+        labels.add("February");
+        labels.add("March");
+
+        BarDataSet set1, set2, set3;
+        if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
+
+            set1 = (BarDataSet) barChart.getData().getDataSetByIndex(0);
+            set2 = (BarDataSet) barChart.getData().getDataSetByIndex(1);
+            set3 = (BarDataSet) barChart.getData().getDataSetByIndex(2);
+
+            set1.setValues(yFrequency);
+            set2.setValues(yHumidity);
+            set3.setValues(yTemperature);
+
+            barChart.getData().notifyDataChanged(); // let the data know a dataSet changed
+            barChart.notifyDataSetChanged();
+        } else {
+            // create 4 DataSets
+            set1 = new BarDataSet(yFrequency, "Frequency");
+            set1.setColor(R.color.bg_screen1);
+            set2 = new BarDataSet(yHumidity, "Humidity");
+            set2.setColor(R.color.bg_screen3);
+            set3 = new BarDataSet(yTemperature, "Temperature");
+            set3.setColor(R.color.bg_screen4);
+
+            BarData data = new BarData(set1, set2, set3);
+            data.setValueFormatter(new LargeValueFormatter());
+            //data.setValueTypeface(mTfLight);
+
+            barChart.setData(data);
+            ScatterData dotData = new ScatterData(dotDataset);
+            barChart.setData(data,dotData);
+            //barChart.setData(dotData);
+        }
+
+        barChart.getAxisRight().setAxisMinimum(500);
+        barChart.getAxisRight().setAxisMaximum(10000);
+        barChart.getAxisLeft().setAxisMinimum(0);
+        barChart.getAxisLeft().setAxisMaximum(100);
+        // specify the width each bar should have
+        barChart.getBarData().setBarWidth(barWidth);
+
+        // restrict the x-axis range
+        barChart.getXAxis().setAxisMinimum(0);
+
+        // barData.getGroupWith(...) is a helper that calculates the width each group needs based on the provided parameters
+        barChart.getXAxis().setAxisMaximum(100);
+        barChart.groupBars(10, groupSpace, barSpace);
+        set3.setAxisDependency(YAxis.AxisDependency.RIGHT);
+        set1.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set2.setAxisDependency(YAxis.AxisDependency.LEFT);
+        //barChart.getXAxis().setDrawAxisLine(false);
+       // barChart.getXAxis().setDrawGridLines(false); // disable grid lines for the XAxis
+        barChart.getAxisLeft().setDrawGridLines(false); // disable grid lines for the left YAxis
+        barChart.getAxisRight().setDrawGridLines(false);
+        //barChart.setDrawGridBackground(false);
+        barChart.invalidate();
+*/
+//        }
+
+    }
+
+    private ArrayList<String> getXAxisValues() {
+        ArrayList<String> labels = new ArrayList<>();
+        labels.add("JAN");
+        labels.add("FEB");
+        labels.add("MAR");
+        return labels;
+    }
+
+    public ScatterData scatterData(){
+        ArrayList<Entry> scatter = new ArrayList<>();
+        scatter.add(new Entry(2f, 0));
+        scatter.add(new Entry(4f, 1));
+        scatter.add(new Entry(3f, 2));
+
+        ScatterDataSet scatterDataSet = new ScatterDataSet(scatter, "Brand 2");
+        scatterDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        ScatterData scatterData = new ScatterData(scatterDataSet);
+        return scatterData;
+    }
+    public BarData barData(){
+        ArrayList<BarEntry> group1 = new ArrayList<>();
+        group1.add(new BarEntry(4f, 0));
+        group1.add(new BarEntry(8f, 1));
+        group1.add(new BarEntry(6f, 2));
+        group1.add(new BarEntry(12f, 3));
+        group1.add(new BarEntry(18f, 4));
+        group1.add(new BarEntry(9f, 5));
+        BarDataSet barDataSet = new BarDataSet(group1, "Brand 1");
+        //barDataSet.setColor(Color.rgb(0, 155, 0));
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        BarData barData = new BarData(barDataSet);
+        return barData;
+    }
+}

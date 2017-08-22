@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MpAndroid</string>
+    <string name="frequency">Frequency</string>
+    <string name="temperature_text">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="sound">Sound</string>
+    <string name="vibration">Vibration</string>
+    <string name="frequency_text">Frequency</string>
+</resources>
